@@ -6,6 +6,7 @@ import express from 'express';
 import { MikroORM } from '@mikro-orm/core';
 import redis from 'redis';
 import session from 'express-session';
+import cors from 'cors';
 
 import { HelloResolver } from './resolvers/hello.resolver';
 import microConfig from './config/mikro-orm.config';
@@ -23,6 +24,12 @@ const main = async () => {
 
   const RedisStore = connectRedis(session);
   const redisClient = redis.createClient();
+  app.use(
+    cors({
+      origin: 'http://localhost:3000',
+      credentials: true,
+    })
+  );
 
   app.use(
     session({
@@ -48,7 +55,10 @@ const main = async () => {
     context: ({ req, res }): MyContext => ({ em: orm.em, req, res }),
   });
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({
+    app,
+    cors: false,
+  });
 
   app.listen(4000, () => {
     console.log('Server started on http://localhost:4000/graphql');
