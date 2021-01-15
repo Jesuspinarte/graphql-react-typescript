@@ -1,0 +1,60 @@
+###### SERVER ######
+
+# dependencies
+/server/node_modules/
+
+# production
+/server/dist
+
+# misc
+/server/.DS_Store
+/server/*.pem
+
+# debug
+/server/npm-debug.log*
+/server/yarn-debug.log*
+/server/yarn-error.log*
+
+# local env files
+/server/.env.local
+/server/.env.development.local
+/server/.env.test.local
+/server/.env.production.local
+
+# vercel
+/server/.vercel
+
+###### CLIENT ######
+
+# dependencies
+/app/node_modules
+/app/.pnp
+/app/.pnp.js
+
+# testing
+/app/coverage
+
+# next.js
+/app/.next/
+/app/out/
+
+# production
+/app/build
+
+# misc
+/app/.DS_Store
+/app/*.pem
+
+# debug
+/app/npm-debug.log*
+/app/yarn-debug.log*
+/app/yarn-error.log*
+
+# local env files
+/app/.env.local
+/app/.env.development.local
+/app/.env.test.local
+/app/.env.production.local
+
+# vercel
+/app/.vercel
